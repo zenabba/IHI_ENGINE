@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# Data (keep the folders, not the contents; sample fixtures are whitelisted)
+data/raw/*
+data/processed/*
+!data/raw/sample_readings.csv
+!data/**/.gitkeep
+
+# Model artifacts
+artifacts/
+models/
+*.pkl
+*.joblib
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
