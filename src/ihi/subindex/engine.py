@@ -12,8 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-import yaml
-
+from ..config import load_family_weights, load_thresholds
 from .normalize import sub_index
 
 
@@ -49,18 +48,13 @@ class IHIResult:
 
 
 # ---------------------------------------------------------------------------
-# Config loading
+# Engine
 # ---------------------------------------------------------------------------
-def _default_config_dir() -> Path:
-    # repo_root/config  (this file is src/ihi/subindex/engine.py)
-    return Path(__file__).resolve().parents[3] / "config"
-
-
 class IHIEngine:
     def __init__(self, config_dir: str | Path | None = None):
-        cfg = Path(config_dir) if config_dir else _default_config_dir()
-        self.thresholds = yaml.safe_load((cfg / "thresholds.yaml").read_text())["families"]
-        self.weights = yaml.safe_load((cfg / "weights.yaml").read_text())["family_weights"]
+        # config_dir=None -> repo_root/config (see ihi.config)
+        self.thresholds = load_thresholds(config_dir)
+        self.weights = load_family_weights(config_dir)
 
     # -- family-level -------------------------------------------------------
     def _family_index(self, name: str, reading: dict) -> FamilyResult:

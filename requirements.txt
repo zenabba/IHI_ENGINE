@@ -3,11 +3,11 @@
 # -----------------------------------------------------------------------------
 pyyaml>=6.0
 pytest>=8.0
-# pandas, numpy, scipy, pydantic get used once ingestion/features grow:
+pydantic>=2.7         # input validation (src/ihi/features/schema.py)
+# pandas, numpy, scipy get used once ingestion/features grow:
 # pandas>=2.2
 # numpy>=1.26
 # scipy>=1.13
-# pydantic>=2.7
 
 # -----------------------------------------------------------------------------
 # Phase 2 — ML core  (uncomment when you start src/ihi/ml/)

@@ -7,6 +7,10 @@
 #   low_good   -> a LOW value is healthy   (normal < critical)   e.g. gases, water, acidity
 #   high_good  -> a HIGH value is healthy  (normal > critical)   e.g. dielectric strength, PI
 #
+# allow_negative (optional, default false):
+#   Input validation rejects negative values unless this is true. Only set it
+#   for quantities that can physically go below zero (temperatures in degC).
+#
 # IMPORTANT: these numbers are a STARTING POINT copied from the proposal.
 # Before production, every threshold must be validated against the cited
 # standard + your own fleet data (see config/standards_map.yaml).
@@ -29,9 +33,9 @@ families:
   thermal:
     label: "Paramètres thermiques"
     parameters:
-      top_oil:   {normal: 85,  critical: 105, polarity: low_good, unit: "degC"}
-      winding:   {normal: 95,  critical: 120, polarity: low_good, unit: "degC"}
-      hot_spot:  {normal: 110, critical: 140, polarity: low_good, unit: "degC"}
+      top_oil:   {normal: 85,  critical: 105, polarity: low_good, unit: "degC", allow_negative: true}
+      winding:   {normal: 95,  critical: 120, polarity: low_good, unit: "degC", allow_negative: true}
+      hot_spot:  {normal: 110, critical: 140, polarity: low_good, unit: "degC", allow_negative: true}
       load:      {normal: 80,  critical: 120, polarity: low_good, unit: "percent"}
 
   # NOTE: the proposal assigns the electrical family a weight (0.15) but the

@@ -45,9 +45,9 @@ There is no packaging (no `pyproject.toml`). Scripts and tests make `ihi` import
 
 ## Configuration is the source of truth
 
-All thresholds and weights live in `config/`. They must not be hardcoded in the engine. By default `IHIEngine()` loads the repo-root `config/` directory, found by walking up from `engine.py` (`parents[3]`). Pass `config_dir=` to override it.
+All thresholds and weights live in `config/`. They must not be hardcoded in the engine. Always load them through `src/ihi/config.py`, which resolves the repo-root `config/` by default. Components take `config_dir=` to override it.
 
-- `config/thresholds.yaml`: `families -> <family> -> parameters -> <param>: {normal, critical, polarity, unit}`. A parameter name is the key expected in the reading dict.
+- `config/thresholds.yaml`: `families -> <family> -> parameters -> <param>: {normal, critical, polarity, unit, allow_negative?}`. A parameter name is the key expected in the reading dict. It must be unique across families. The input schema (`src/ihi/features/schema.py`) is **generated** from this file, so a new parameter is validated automatically.
 - `config/weights.yaml`: `family_weights`, which sum to 1.0.
 - `config/standards_map.yaml`: the IEC/IEEE standard behind each family's thresholds, kept for audit traceability.
 
