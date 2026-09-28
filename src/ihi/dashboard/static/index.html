@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IHI — Parc de transformateurs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-title">IHI</div>
+        <div class="brand-sub">Indice Intelligent de Santé</div>
+      </div>
+
+      <nav class="nav" id="nav">
+        <a href="#/parc" data-route="parc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Parc
+        </a>
+        <a href="#/alertes" data-route="alertes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          Alertes
+          <span class="badge" id="alert-badge" hidden>0</span>
+        </a>
+        <a href="#/mesure" data-route="mesure">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+          Nouvelle mesure
+        </a>
+        <a href="#/parametres" data-route="parametres">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+          Paramètres
+        </a>
+        <a href="#/methodologie" data-route="methodologie">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/></svg>
+          Méthodologie
+        </a>
+      </nav>
+
+      <div class="user">
+        <div class="avatar">[IN]</div>
+        <div>
+          <div class="user-name">[Nom]</div>
+          <div class="user-role">Ingénieur maintenance</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar" id="topbar"></header>
+      <section class="content" id="view"><div class="loading">Chargement…</div></section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

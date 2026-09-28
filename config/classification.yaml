@@ -1,0 +1,21 @@
+# =============================================================================
+# Health classes: IHI % band -> state label -> recommended action.
+# -----------------------------------------------------------------------------
+# Bands from the classification table in ARCHITECTURE_IHI.docx ("Si votre
+# classification est : 80–100 % Excellent ..."), actions from the
+# intervention-level table (section H, "Niveau IHI / État / Action proposée").
+#
+# `lower` is inclusive: a score belongs to the first band (top to bottom) whose
+# lower bound it reaches. Keep the list ordered from best to worst and end it
+# with lower: 0.
+#
+# The document itself says these limits must be validated against real data
+# and applicable standards rather than fixed arbitrarily.
+# =============================================================================
+
+bands:
+  - {lower: 80, label: "Excellent",     action: "Surveillance normale"}
+  - {lower: 60, label: "Bon",           action: "Surveillance normale"}
+  - {lower: 40, label: "Dégradé",       action: "Surveillance renforcée"}
+  - {lower: 20, label: "Critique",      action: "Maintenance préventive"}
+  - {lower: 0,  label: "Très critique", action: "Intervention prioritaire"}

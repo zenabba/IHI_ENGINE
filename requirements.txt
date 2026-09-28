@@ -10,6 +10,14 @@ pydantic>=2.7         # input validation (src/ihi/features/schema.py)
 # scipy>=1.13
 
 # -----------------------------------------------------------------------------
+# Local dashboard (run_dashboard.py, src/ihi/dashboard/)
+# FastAPI/uvicorn were planned for Phase 3 serving; the dashboard needs them now.
+# -----------------------------------------------------------------------------
+fastapi>=0.115
+uvicorn>=0.32
+httpx>=0.27           # FastAPI TestClient, used by tests/test_dashboard.py
+
+# -----------------------------------------------------------------------------
 # Phase 2 — ML core  (uncomment when you start src/ihi/ml/)
 # -----------------------------------------------------------------------------
 # scikit-learn>=1.5
@@ -21,8 +29,6 @@ pydantic>=2.7         # input validation (src/ihi/features/schema.py)
 # -----------------------------------------------------------------------------
 # statsmodels>=0.14
 # lifelines>=0.29
-# fastapi>=0.115
-# uvicorn>=0.32
 
 # Pin exact versions with a lockfile (uv / poetry) before production —
 # you must be able to reproduce any historical IHI for audit.

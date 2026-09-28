@@ -1,0 +1,16 @@
+# =============================================================================
+# Trend and alert rules used by the fleet dashboard.
+# -----------------------------------------------------------------------------
+# ARCHITECTURE_IHI.docx section H: a falling IHI(t) means progressive
+# degradation, and a steep dIHI/dt means *accelerated* degradation. The document
+# doesn't give a number for "steep", so the value below is a PLACEHOLDER to be
+# set from fleet history (see temporal/ in Phase 3).
+# =============================================================================
+
+trend:
+  # Rate between the last two evaluations, in IHI points per year.
+  # A decline at least this fast is flagged "Dégradation accélérée".
+  accelerated_decline_pt_per_year: 8.0
+
+# Health classes (labels from classification.yaml) that raise an alert on their own.
+alert_classes: ["Critique", "Très critique"]
