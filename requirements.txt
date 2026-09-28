@@ -1,0 +1,28 @@
+# -----------------------------------------------------------------------------
+# Phase 1 — deterministic engine (all you need to run run_example.py + tests)
+# -----------------------------------------------------------------------------
+pyyaml>=6.0
+pytest>=8.0
+# pandas, numpy, scipy, pydantic get used once ingestion/features grow:
+# pandas>=2.2
+# numpy>=1.26
+# scipy>=1.13
+# pydantic>=2.7
+
+# -----------------------------------------------------------------------------
+# Phase 2 — ML core  (uncomment when you start src/ihi/ml/)
+# -----------------------------------------------------------------------------
+# scikit-learn>=1.5
+# xgboost>=2.1          # or: lightgbm>=4.5
+# shap>=0.46
+
+# -----------------------------------------------------------------------------
+# Phase 3 — prognostics + serving
+# -----------------------------------------------------------------------------
+# statsmodels>=0.14
+# lifelines>=0.29
+# fastapi>=0.115
+# uvicorn>=0.32
+
+# Pin exact versions with a lockfile (uv / poetry) before production —
+# you must be able to reproduce any historical IHI for audit.

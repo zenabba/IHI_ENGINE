@@ -1,0 +1,22 @@
+# =============================================================================
+# Family weights for the Tier-1 weighted aggregation.
+# -----------------------------------------------------------------------------
+# Values from the "Exemple simple" weights table in ARCHITECTURE_IHI.docx.
+#
+# WARNING: your document actually contains TWO different weight tables that
+# disagree (the second gives thermal=0.15, insulation=0.15). These weights are
+# expert guesses and MUST be validated / learned from data. This file is the
+# single place to change them — never hardcode weights in the engine.
+#
+# If a family has no measured parameters in a given reading, its weight is
+# automatically redistributed across the remaining families (see engine.py).
+# =============================================================================
+
+family_weights:
+  dga:        0.30
+  thermal:    0.20
+  electrical: 0.15
+  oil:        0.15
+  insulation: 0.10
+  age:        0.10
+# sum = 1.00

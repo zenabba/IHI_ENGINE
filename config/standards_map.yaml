@@ -1,0 +1,28 @@
+# =============================================================================
+# Traceability: which standard each family's thresholds should be anchored to.
+# -----------------------------------------------------------------------------
+# This is the audit backbone. For a regulated asset you must be able to justify
+# every threshold. Fill in the exact clause/table and edition you validated
+# against, then confirm you are on the current edition of each standard.
+# The values currently in thresholds.yaml are from the proposal doc, NOT yet
+# verified against these standards — that verification is the next work item.
+# =============================================================================
+
+dga:
+  standards: ["IEC 60599", "IEEE C57.104"]
+  note: "Confirm current editions. Consider ratio/rate logic (Duval, Rogers), not absolute thresholds alone."
+thermal:
+  standards: ["IEC 60076-2", "IEEE C57.91"]
+  note: "Loading guide defines temperature / hot-spot limits."
+electrical:
+  standards: ["IEEE C57.12.90"]
+  note: "Thresholds not yet defined in the proposal."
+oil:
+  standards: ["IEC 60422", "IEEE C57.106"]
+  note: "In-service mineral oil condition limits."
+insulation:
+  standards: ["IEEE C57.12.90", "IEEE 62"]
+  note: "PI, tan delta, insulation resistance."
+age:
+  standards: ["IEEE C57.91"]
+  note: "Ageing / DP correlation; refine with furan / DP data if available."

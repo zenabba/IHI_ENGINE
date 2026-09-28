@@ -1,0 +1,65 @@
+# =============================================================================
+# IHI threshold configuration  (X_normal / X_critical per parameter)
+# -----------------------------------------------------------------------------
+# Seeded from the "Tableau global proposé pour votre IHI" in ARCHITECTURE_IHI.docx.
+#
+# polarity:
+#   low_good   -> a LOW value is healthy   (normal < critical)   e.g. gases, water, acidity
+#   high_good  -> a HIGH value is healthy  (normal > critical)   e.g. dielectric strength, PI
+#
+# IMPORTANT: these numbers are a STARTING POINT copied from the proposal.
+# Before production, every threshold must be validated against the cited
+# standard + your own fleet data (see config/standards_map.yaml).
+# =============================================================================
+
+families:
+
+  dga:
+    label: "Analyse des gaz dissous (DGA)"
+    parameters:
+      H2:    {normal: 100,   critical: 1800,  polarity: low_good, unit: ppm}
+      CH4:   {normal: 120,   critical: 1000,  polarity: low_good, unit: ppm}
+      C2H6:  {normal: 65,    critical: 150,   polarity: low_good, unit: ppm}
+      C2H4:  {normal: 50,    critical: 200,   polarity: low_good, unit: ppm}
+      C2H2:  {normal: 1,     critical: 35,    polarity: low_good, unit: ppm}
+      CO:    {normal: 350,   critical: 1400,  polarity: low_good, unit: ppm}
+      CO2:   {normal: 2500,  critical: 10000, polarity: low_good, unit: ppm}
+      TDCG:  {normal: 720,   critical: 4630,  polarity: low_good, unit: ppm}
+
+  thermal:
+    label: "Paramètres thermiques"
+    parameters:
+      top_oil:   {normal: 85,  critical: 105, polarity: low_good, unit: "degC"}
+      winding:   {normal: 95,  critical: 120, polarity: low_good, unit: "degC"}
+      hot_spot:  {normal: 110, critical: 140, polarity: low_good, unit: "degC"}
+      load:      {normal: 80,  critical: 120, polarity: low_good, unit: "percent"}
+
+  # NOTE: the proposal assigns the electrical family a weight (0.15) but the
+  # global table gives it NO thresholds. Left intentionally empty so you can
+  # see the engine renormalize weights over the families that DO have data
+  # (this is the missing-family handling). Fill these in once defined.
+  electrical:
+    label: "Paramètres électriques"
+    parameters: {}
+
+  oil:
+    label: "Qualité de l'huile"
+    parameters:
+      water:               {normal: 20,  critical: 35,  polarity: low_good,  unit: ppm}
+      acidity:             {normal: 0.10, critical: 0.20, polarity: low_good, unit: "mgKOH/g"}
+      dielectric_strength: {normal: 28,  critical: 23,  polarity: high_good, unit: kV}
+      interfacial_tension: {normal: 30,  critical: 25,  polarity: high_good, unit: "mN/m"}
+      tan_delta_oil:       {normal: 0.5, critical: 1.0, polarity: low_good,  unit: percent}
+
+  insulation:
+    label: "État de l'isolation"
+    parameters:
+      polarization_index:   {normal: 2.0, critical: 1.0, polarity: high_good, unit: "ratio"}
+      # PF / tan delta of insulation, <230 kV class (a separate >=230 kV row exists in the doc)
+      pf_tan_delta:         {normal: 0.5, critical: 1.0, polarity: low_good,  unit: percent}
+      insulation_resistance: {normal: 100, critical: 10, polarity: high_good, unit: "Mohm"}
+
+  age:
+    label: "Âge / historique"
+    parameters:
+      age_years: {normal: 10, critical: 40, polarity: low_good, unit: years}
